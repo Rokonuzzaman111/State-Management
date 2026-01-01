@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management/Provider/home_page_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  String ageInput="";
 
   ButtonStyle buttonstyle = ElevatedButton.styleFrom(
     backgroundColor: const Color.fromARGB(255, 255, 236, 180),
@@ -83,8 +87,69 @@ class _HomePageState extends State<HomePage> {
           ),
           */
 
-          SizedBox(height: 20,),
-          Text("Others")
+
+           Consumer<HomePageProvider>(
+            builder: (context, provider, child) {
+              
+            
+             return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+               children: [
+
+                Text(
+                  provider.eligibilityMessage.toString(),
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+
+                    
+                    color: (provider.isEligible == true) ? const Color.fromARGB(255, 6, 255, 56) : const Color.fromARGB(255, 255, 0, 0)
+                  ),
+                ),
+
+                 TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                       enabledBorder: OutlineInputBorder(
+                         borderRadius: BorderRadius.circular(8),
+                         borderSide: BorderSide(
+                           color: Colors.grey,
+                           width: 1.5,
+                         ),
+                       ),
+                 
+                      
+                      
+                      
+                      hintText: "Enter your age"
+                    ),
+                    onChanged: (value) {
+                     ageInput = value;
+                    },
+                    
+                    
+                  
+                    ),
+
+                    SizedBox(height: 15,),
+                      ElevatedButton(
+                    style: buttonstyle,
+                    onPressed: () {
+                      if (ageInput.isNotEmpty) {
+                       
+                        provider.checkEligible(int.parse(ageInput));
+                      }
+                    },
+                    child: const Text("Submit"),
+                  ),
+
+
+
+               ],
+             );
+              },
+           ),
+          
 
 
 
