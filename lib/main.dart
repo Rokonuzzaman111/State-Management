@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers:[
-        ChangeNotifierProvider<HomePageProvider>(create: (_)=> HomePageProvider() )
+        ChangeNotifierProvider<HomePageProvider>(create: (_)=> HomePageProvider() ),
+        ChangeNotifierProvider<ItemCount>(create: (_)=> ItemCount() ),
 
 
       ],
