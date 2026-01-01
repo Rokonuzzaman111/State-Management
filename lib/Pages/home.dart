@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_management/Pages/cart_page.dart';
 import 'package:state_management/Provider/home_page_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -149,6 +150,84 @@ class _HomePageState extends State<HomePage> {
              );
               },
            ),
+
+
+           SizedBox(height: 20,),
+           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Shoping", style: TextStyle(color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),),
+              SizedBox(height: 5,),
+
+             Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(context.watch<ItemCount>().count.toString()),
+                
+                  SizedBox(width: 200,),
+                  Text("Total",  style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),)
+                  
+
+                ],
+               ),
+            
+              SizedBox(height: 25,),
+
+             
+                
+             Row(
+               children: [
+
+                 ElevatedButton(
+                      style: buttonstyle,
+                      onPressed: (){
+                        if(context.read<ItemCount>().count<5){
+                          context.read<ItemCount>().addItem();
+                          
+
+                        }
+                         //Provider.of<ItemCount>(context, listen: false).addItem();
+                      }, 
+                      child: Icon(Icons.add)
+                      ),
+
+                      SizedBox(width: 10,),
+
+                        ElevatedButton(
+                      style: buttonstyle,
+                      onPressed: (){
+                        if(context.read<ItemCount>().count>0){
+                        context.read<ItemCount>().removeItem();
+                        }
+                         //Provider.of<ItemCount>(context, listen: false).removeItem();
+                      }, 
+                      child: Icon(Icons.remove)
+                      ),
+
+
+               ],
+             ),
+
+                  
+
+              
+
+
+
+              SizedBox(height: 25,),
+
+              ElevatedButton(
+                style: buttonstyle,
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
+
+              }, 
+              child: Center(child: Text("Next Page", ))
+              )
+
+
+            ],
+           )
           
 
 
