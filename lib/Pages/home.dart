@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           
           SizedBox(height: 25,),
-          Column(
+         /* Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -79,7 +79,9 @@ class _HomePageState extends State<HomePage> {
 
 
             ],
+          
           ),
+          */
 
           SizedBox(height: 20,),
           Text("Others")
