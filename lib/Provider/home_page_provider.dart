@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomePageProvider extends ChangeNotifier{
 
@@ -9,11 +12,8 @@ class HomePageProvider extends ChangeNotifier{
   void checkEligible(int age){
     if( age >= 18){
       isEligible = true;
-      
       eligibilityMessage = "You are eligible for Lisence!";
-      
-    
-     notifyListeners();
+      notifyListeners();
 
     }
     else{
@@ -60,6 +60,9 @@ class UserDetails extends ChangeNotifier{
  String userName = "";
  int userAge = 0;
  String userSkills = "";
+
+ final ImagePicker picker = ImagePicker();
+ File? imageFile;
  
 
 
@@ -76,12 +79,29 @@ class UserDetails extends ChangeNotifier{
 
   void inputUserSkills({required String newUserSkills})async{
     userSkills = newUserSkills;
+    notifyListeners();
+
+  }
+
+  Future<void> pickImage() async{
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.gallery
+    
+    );
+    if(image!=null){
+       imageFile = File(image.path);
+       notifyListeners();
+
+    }
 
   }
 
 
-  
-
-
 
 }
+
+
+
+
+
+
