@@ -11,8 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  TextEditingController ageController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController userAgeController = TextEditingController();
+  TextEditingController userSkillsController = TextEditingController();
 
-  String ageInput="";
 
   ButtonStyle buttonstyle = ElevatedButton.styleFrom(
     backgroundColor: const Color.fromARGB(255, 255, 236, 180),
@@ -109,6 +112,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                  TextField(
+                  controller: ageController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                        enabledBorder: OutlineInputBorder(
@@ -124,9 +128,7 @@ class _HomePageState extends State<HomePage> {
                       
                       hintText: "Enter your age"
                     ),
-                    onChanged: (value) {
-                     ageInput = value;
-                    },
+                 
                     
                     
                   
@@ -136,9 +138,9 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton(
                     style: buttonstyle,
                     onPressed: () {
-                      if (ageInput.isNotEmpty) {
+                      if (ageController.text.isNotEmpty) {
                        
-                        provider.checkEligible(int.parse(ageInput));
+                        provider.checkEligible(int.parse(ageController.text));
                       }
                     },
                     child: const Text("Submit"),
@@ -214,7 +216,151 @@ class _HomePageState extends State<HomePage> {
 
 
 
-              SizedBox(height: 25,),
+              SizedBox(height: 30,),
+
+               Consumer<UserDetails>(
+            builder: (context, provider, child) {
+              
+            
+             return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+               children: [
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 60),
+                   child: TextField(
+                    controller: userNameController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                         enabledBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(8),
+                           borderSide: BorderSide(
+                             color: Colors.grey,
+                             width: 1.5,
+                           ),
+                         ),
+                   
+                        
+                        
+                        
+                         label:Text("Enter full name")
+                      ),
+                                
+                      
+                    
+                      ),
+                 ),
+
+                
+
+               ],
+             );
+              },
+           ),
+           SizedBox(height: 20,),
+
+
+             Consumer<UserDetails>(
+            builder: (context, provider, child) {
+              
+            
+             return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+               children: [
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 60),
+                   child: TextField(
+                    controller: userAgeController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                         enabledBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(8),
+                           borderSide: BorderSide(
+                             color: Colors.grey,
+                             width: 1.5,
+                           ),
+                         ),
+                   
+                        
+                        
+                        
+                        label:Text("Enter age")
+                      ),
+                                
+                      
+                    
+                      ),
+                 ),
+
+                
+
+               ],
+             );
+              },
+           ),
+
+           SizedBox(height: 20,),
+
+           Consumer<UserDetails>(
+            builder: (context, provider, child){
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 60),
+                child: TextField(
+                   controller: userSkillsController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                         enabledBorder: OutlineInputBorder(
+                           borderRadius: BorderRadius.circular(8),
+                           borderSide: BorderSide(
+                             color: Colors.grey,
+                             width: 1.5,
+                           ),
+                         ),
+                   
+                        
+                        
+                        
+                        label:Text("Enter your skills")
+                      ),
+
+
+                ),
+              );
+
+            }
+           
+           ),
+
+
+
+           SizedBox(height: 20,),
+
+
+
+
+
+
+
+             Center(
+               child: ElevatedButton(
+                        style: buttonstyle,
+                        onPressed: (){
+                         
+                         // context.read<UserDetails>().inputUserName(newUsername : userNameController.text); not Recommanded
+                          Provider.of<UserDetails>(context, listen: false).inputUserName(newUsername : userNameController.text);
+                          Provider.of<UserDetails>(context, listen: false).inputUserAge(newUserAge: int.parse(userAgeController.text));
+                          Provider.of<UserDetails>(context, listen: false).inputUserSkills(newUserSkills: userSkillsController.text);
+                        }, 
+                        child: Text("Save")
+                        ),
+             ),
+
+
+
+
+
+
+
+              SizedBox(height: 35,),
 
               ElevatedButton(
                 style: buttonstyle,
