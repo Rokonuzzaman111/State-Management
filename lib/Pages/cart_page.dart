@@ -46,7 +46,58 @@ class _CartPageState extends State<CartPage> {
                );
               } 
                  ), 
-              SizedBox(height: 25,),
+              SizedBox(height: 35,),
+
+              Center(
+                child: Consumer<UserDetails>(
+                builder: (context, provider,child){
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Name: ${provider.userName}",  style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),)
+                
+                    ],
+                  );
+                
+                }
+                
+                ),
+
+
+              ),
+              SizedBox(height: 20,),
+
+              Center(
+                child: Consumer<UserDetails>(
+                builder: (context, provider,child){
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Age: ${provider.userAge.toString()}",  style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),)
+                
+                    ],
+                  );
+                
+                }
+                
+                ),
+
+                
+              ),
+
+              SizedBox(height: 20,),
+              Center(
+                child: Consumer<UserDetails>(
+                  builder: (context , provider , child){
+                    return Text("Skills: ${provider.userSkills}",   style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),);
+                  }
+                
+                
+                ),
+              )
+
+
+
 
              
                 
