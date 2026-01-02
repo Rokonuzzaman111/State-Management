@@ -306,7 +306,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.symmetric(horizontal: 60),
                 child: TextField(
                    controller: userSkillsController,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                          enabledBorder: OutlineInputBorder(
                            borderRadius: BorderRadius.circular(8),
@@ -334,6 +334,26 @@ class _HomePageState extends State<HomePage> {
 
            SizedBox(height: 20,),
 
+           Consumer<UserDetails>(
+            builder: (context, provider, child){
+             return Center(
+               child: ElevatedButton(
+                style: buttonstyle,
+                onPressed: (){
+                  provider.pickImage();
+               
+                 }, 
+               child: Text("Choose an Image")
+               ),
+              );
+             },
+           ),
+
+
+
+
+           SizedBox(height: 20,),
+
 
 
 
@@ -349,7 +369,9 @@ class _HomePageState extends State<HomePage> {
                           Provider.of<UserDetails>(context, listen: false).inputUserName(newUsername : userNameController.text);
                           Provider.of<UserDetails>(context, listen: false).inputUserAge(newUserAge: int.parse(userAgeController.text));
                           Provider.of<UserDetails>(context, listen: false).inputUserSkills(newUserSkills: userSkillsController.text);
+                          
                         }, 
+
                         child: Text("Save")
                         ),
              ),
