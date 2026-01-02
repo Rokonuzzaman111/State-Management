@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management/Provider/home_page_provider.dart';
@@ -46,6 +48,65 @@ class _CartPageState extends State<CartPage> {
                );
               } 
                  ), 
+
+
+                 SizedBox(height: 35,),
+
+                 Center(
+                   child: Consumer<UserDetails>(
+                    builder: (context, provider, child){
+                      return Stack(
+                        children: [ 
+                          Container(
+                                height: 130,
+                                width: 130,
+                                decoration: BoxDecoration(
+                                color: Colors.amber,
+                                shape: BoxShape.circle
+                                ),
+                                child:  provider.imageFile != null
+                                       ? ClipOval(
+                                         child: Image.file(
+                                          provider.imageFile!,
+                                           fit: BoxFit.cover,
+                             ),
+                        )
+                                    : Icon(
+                                         Icons.person,
+                                          size: 80,
+                                        color: Colors.grey,
+                                   ),
+                        ),
+
+                        Positioned(
+                          top: 85,
+                          left: 82,
+                          child: Consumer<UserDetails>(
+                            builder: (context, provider, child){
+                            return IconButton(
+                              onPressed:(){
+                                provider.pickImage();
+                                
+                              } ,
+                               icon: Icon(Icons.edit_square, color:  Colors.grey, size: 26,)
+                            );
+                           } 
+                          )
+                        
+                        )
+
+
+
+                        ],
+                      );
+                    }
+                   
+                   ),
+                 ),
+
+
+
+
               SizedBox(height: 35,),
 
               Center(
