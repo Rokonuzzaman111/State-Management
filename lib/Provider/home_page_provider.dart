@@ -52,3 +52,36 @@ class ItemCount extends ChangeNotifier{
 
 
 }
+
+
+class UserDetails extends ChangeNotifier{
+ 
+
+ String userName = "";
+ int userAge = 0;
+ String userSkills = "";
+ 
+
+
+  void inputUserName( {required String newUsername}) async {
+   userName = newUsername;
+    notifyListeners();
+  }
+
+  void inputUserAge({required int newUserAge}) async {
+    userAge = newUserAge;
+    notifyListeners();
+
+  }
+
+  void inputUserSkills({required String newUserSkills})async{
+    userSkills = newUserSkills;
+
+  }
+
+
+  
+
+
+
+}
