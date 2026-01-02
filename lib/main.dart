@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       providers:[
         ChangeNotifierProvider<HomePageProvider>(create: (_)=> HomePageProvider() ),
         ChangeNotifierProvider<ItemCount>(create: (_)=> ItemCount() ),
+        ChangeNotifierProvider<UserDetails>(create: (_)=> UserDetails() ),
 
 
       ],
