@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management/Pages/cart_page.dart';
+import 'package:state_management/Pages/cv_form_page.dart';
+
+
 import 'package:state_management/Provider/home_page_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -395,7 +398,21 @@ class _HomePageState extends State<HomePage> {
 
 
             ],
-           )
+           ),
+
+
+
+            SizedBox(height: 35,),
+
+              ElevatedButton(
+                style: buttonstyle,
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CvFormPage()));
+
+              }, 
+              child: Center(child: Text("CV Form Page", ))
+              )
+
           
 
 
