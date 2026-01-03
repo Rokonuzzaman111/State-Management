@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management/Pages/home.dart';
+import 'package:state_management/Provider/cv_form_provider.dart';
 import 'package:state_management/Provider/home_page_provider.dart';
 
 void main() {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<HomePageProvider>(create: (_)=> HomePageProvider() ),
         ChangeNotifierProvider<ItemCount>(create: (_)=> ItemCount() ),
         ChangeNotifierProvider<UserDetails>(create: (_)=> UserDetails() ),
+        ChangeNotifierProvider<CvDetails>(create: (_)=> CvDetails() ),
 
 
       ],
