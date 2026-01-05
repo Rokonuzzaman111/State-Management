@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management/Pages/cart_page.dart';
-import 'package:state_management/Pages/cv_form_page.dart';
+//import 'package:state_management/Pages/cv_form_page.dart';
 
 
 import 'package:state_management/Provider/home_page_provider.dart';
@@ -407,7 +407,7 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 style: buttonstyle,
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CvFormPage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
 
               }, 
               child: Center(child: Text("CV Form Page", ))
