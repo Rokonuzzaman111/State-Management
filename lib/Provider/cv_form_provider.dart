@@ -17,6 +17,20 @@ class CvDetails extends ChangeNotifier{
   String userEmail = "";
   String userAddress = "";
 
+  //about me
+
+   String userInfo = "";
+
+   //skills
+
+   String skill1 = "";
+   String skill2 = "";
+   String skill3 = "";
+   String skill4 = "";
+   String skill5 = "";
+
+
+
 
 
 
@@ -79,6 +93,53 @@ void inputEmail({required String userNewEmail})async{
 
 void inputAddress({required String userNewAddress})async{
   userAddress = userNewAddress;
+  notifyListeners();
+
+}
+
+
+//about me
+
+void inputInfo({required String userNewInfo})async{
+  userInfo = userNewInfo;
+  notifyListeners();
+
+}
+
+//skills
+
+void inputSkill1({required String NewSkill1})async{
+  skill1 = NewSkill1;
+  notifyListeners();
+
+}
+
+
+void inputSkill2({required String NewSkill2})async{
+  skill2 = NewSkill2;
+  notifyListeners();
+
+}
+
+
+void inputSkill3({required String NewSkill3})async{
+  skill3 = NewSkill3;
+  notifyListeners();
+
+}
+
+
+
+void inputSkill4({required String NewSkill4})async{
+  skill4 = NewSkill4;
+  notifyListeners();
+
+}
+
+
+
+void inputSkill5({required String NewSkill5})async{
+  skill5 = NewSkill5;
   notifyListeners();
 
 }
